@@ -30,20 +30,26 @@
             width: 100%;
             border-bottom: 2px solid black;
         }
+
         .header h1 {
-            padding-left: 1rem; 
+            padding-left: 1rem;
         }
 
         .contacts {
             display: grid;
-            justify-content: center;
+        }
+
+        .contactBg:nth-child(even) {
+            background-color: #1a1a1a;
+
         }
 
         .contact {
             display: grid;
             grid-template-columns: 2rem 5rem 2fr;
             grid-template-rows: repeat(1, 2rem);
-            
+            align-items: center;
+            padding-left: 1rem;
         }
 
         .footer {
@@ -58,14 +64,12 @@
             <h1>Contacts</h1>
         </div>
 
-        <div class="contactPadding">
-            <div class="contacts"></div>
-        </div>
+        <div class="contacts"></div>
 
         <div class="footer">
             <select name="info" id="info">
                 <option value="email">Email address</option>
-                <option value="email">Phone number</option>
+                <option value="phone">Phone number</option>
             </select>
         </div>
     </div>
@@ -73,25 +77,35 @@
 
     <script src="scripts.js"></script>
     <script>
-        console.log('CONTACTS :', CONTACTS);
         const contacts = document.querySelector('.contacts')
         const contact = document.querySelector('.status')
         const name = document.querySelector('.name')
         const info = document.querySelector('.info')
+        const infoSelector = document.querySelector('select')
 
         function getContacts() {
+            let contactInfo
+
             contacts.innerHTML = CONTACTS.map(contact => {
+                infoSelector.value === 'email'
+                    ? contactInfo = contact.email
+                    : contactInfo = contact.phone
+
                 return `
-                <div class="contact">
-                    <p class="status contactItem">${contact.status}</p>
-                    <p class="name contactItem">${contact.name}</p>
-                    <p class="info contactItem">${contact.email}</p>
+                <div class="contactBg">
+                    <div class="contact">
+                        <p class="status contactItem">${contact.status}</p>
+                        <p class="name contactItem">${contact.name}</p>
+                        <p class="info contactItem">${contactInfo}</p>
+                    </div>
                 </div>`
             }).join('')
         }
 
         getContacts()
 
+
+        infoSelector.addEventListener('change', getContacts)
     </script>
 </body>
 
