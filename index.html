@@ -1,14 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>14four Contact List Challenge</title>
-    
-    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    Let the insanity begin!
+    <style>
+        html {
+            font-family: Helvetica;
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: 1fr 3fr 1fr;
+            background-color: #323232;
+            color: white;
+            max-width: 277px;
+            height: 394px;
+            border-radius: 25px;
+            padding: 1rem;
+        }
+
+        .header {
+            border-bottom: solid 2px black;
+        }
+
+        .contacts {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+
+        }
+
+        .footer {
+            justify-self: end;
+        }
+
+    </style>
+
+    <div class="container">
+        <div class="header">
+            <h1>Contacts</h1>
+        </div>
+
+        <div class="contacts">
+            <div class="contact">
+                <p>status</p>
+                <p>name</p>
+                <p>info</p>
+            </div>
+            <div class="contact">
+                <p>status2</p>
+                <p>name2</p>
+                <p>info2</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <select name="info" id="info">
+                <option value="email">Email address</option>
+                <option value="email">Phone number</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
 </body>
+
 </html>
