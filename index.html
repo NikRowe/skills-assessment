@@ -50,6 +50,7 @@
 
         .popUP {
             color: #00f6ff;
+            display: none;
         }
 
         .footer {
@@ -64,8 +65,13 @@
             color: #333333;
         }
 
+        .contacts:hover .info {
+            display: none;
+        }
+
         .contacts:hover .popUP {
-            color: #333333
+            color: #333333;
+            display: block;
         }
 
         .contacts:hover .status {
@@ -85,10 +91,7 @@
             opacity: 100%
         }
 
-        /* .contact:hover .info {
-            color: #00f6ff;
-
-        } */
+        
     </style>
 
     <div class="container">
@@ -123,11 +126,13 @@
                     <div class="name contactItem">
                         <p>${contact.name}</p>
                     </div>
+                    <div class="info contactItem">
+                        <p>${contact.email}</p>
+                    </div>
                     <div class="info contactItem popUP">
                         <p>${contact.email}</p>
                     </div>
                 </div>`
-            // <p class="info contactItem">${contact.email}</p>
         }).join('')
 
         const names = document.querySelectorAll('.name')
