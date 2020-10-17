@@ -24,6 +24,7 @@
             height: 394px;
             max-height: 394px;
             border-radius: 25px;
+            box-shadow: 1px 10px 8px rgba(85, 84, 84, 0.5)
         }
 
         .header {
@@ -35,14 +36,6 @@
             padding-left: 1rem;
         }
 
-        .contacts {
-            display: grid;
-        }
-
-        .contactBg:nth-child(even) {
-            background-color: #1a1a1a;
-        }
-
         .contact {
             display: grid;
             grid-template-columns: 2rem 5rem 2fr;
@@ -51,26 +44,12 @@
             padding-left: 1rem;
         }
 
-        .inactive {
-            background-color: black;
-            color: rgba(48, 48, 48, 0.5)
+        .contact:nth-child(even) {
+            background-color: #1a1a1a;
         }
 
-        .active {
-            background-color: #484848;
-            color: white
-        }
-
-        .popUp {
-            transition: all 0.2s;
-            /* this allows it too look smooth instead of ugly snaps */
-            position: absolute;
-            top: 0;
-            background: white;
-            left: 0;
-            border-radius: 20px;
-            display: none;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        .popUP {
+            color: #00f6ff;
         }
 
         .footer {
@@ -78,6 +57,38 @@
             padding-right: 1rem;
             padding-top: 1rem;
         }
+
+        /* hover css */
+        .contacts:hover {
+            background-color: #1a1a1a;
+            color: #333333;
+        }
+
+        .contacts:hover .popUP {
+            color: #333333
+        }
+
+        .contacts:hover .status {
+            opacity: 25%
+        }
+
+        .contact:hover {
+            background-color: #484848;
+            color: white;
+        }
+
+        .contact:hover .info {
+            color: #00f6ff;
+        }
+
+        .contact:hover .status {
+            opacity: 100%
+        }
+
+        /* .contact:hover .info {
+            color: #00f6ff;
+
+        } */
     </style>
 
     <div class="container">
@@ -85,10 +96,10 @@
             <h1>Contacts</h1>
         </div>
 
-        <div class="contacts"></div>
+        <div class="contacts" id="contacts"></div>
 
         <div class="footer">
-            <select name="info" id="info">
+            <select name="info" id="infoSelector">
                 <option value="email">Email address</option>
                 <option value="phone">Phone number</option>
             </select>
@@ -98,103 +109,55 @@
 
     <script src="scripts.js"></script>
     <script>
-        const contacts = document.querySelector('.contacts')
-        const infoSelector = document.querySelector('#info')
-
-        const popUp = document.createElement('div');
-        popUp.classList.add('popUp');
-        document.body.appendChild(popUp);
-
-
+        const contactsList = document.querySelector('.contacts')
+        const infoSelector = document.querySelector('#infoSelector')
         let contactInfo
-        let lastOn
-        contacts.innerHTML = CONTACTS.map(contact => {
+
+
+        contactsList.innerHTML = CONTACTS.map(contact => {
             return `
-            <div class="contactBg">
                 <div class="contact">
-                    <p class="status contactItem">${contact.status}</p>
-                    <p class="name contactItem">${contact.name}</p>
-                    <p class="info contactItem">${contact.email}</p>
+                    <div class="status contactItem">
+                        <p>${contact.status}</p>
                     </div>
-                    </div>`
+                    <div class="name contactItem">
+                        <p>${contact.name}</p>
+                    </div>
+                    <div class="info contactItem popUP">
+                        <p>${contact.email}</p>
+                    </div>
+                </div>`
+            // <p class="info contactItem">${contact.email}</p>
         }).join('')
 
         const names = document.querySelectorAll('.name')
         const info = document.querySelector('.info')
-        const contactBg = contacts.querySelectorAll('.contactBg')
         const contactLine = document.querySelectorAll('.contact')
 
-        function updateInfo(e) {
 
-            contacts.innerHTML = CONTACTS.map(contact => {
+
+
+        function updateInfo(e) {
+            contactsList.innerHTML = CONTACTS.map(contact => {
                 infoSelector.value === 'email'
                     ? contactInfo = contact.email
                     : contactInfo = contact.phone
 
                 return `
-                <div class="contactBg">
-                    <div class="contact">
-                        <p class="status contactItem">${contact.status}</p>
-                        <p class="name contactItem">${contact.name}</p>
-                        <p class="info contactItem">${contactInfo}</p>
-                        </div>
+                <div class="contact">
+                    <p class="status contactItem">${contact.status}</p>
+                    <p class="name contactItem">${contact.name}</p>
+                    <p class="info contactItem popUP">${contactInfo}</p>
                     </div>`
             }).join('')
         }
 
 
-        function triggerPopUp(name) {
-            const linkCoords = this.getBoundingClientRect()
-            // this takes into account the scroll position && the menu item size then adjusts the span styling accordingly // 
-            const userCoords = {
-                width: linkCoords.width,
-                height: linkCoords.height,
-                top: linkCoords.top + window.scrollY,
-                left: linkCoords.left + window.scrollX
-            }
-
-            // sets the span css to dynamically match the targeted <a> //
-            popUp.style.width = `${linkCoords.width}px`
-            popUp.style.height = `${linkCoords.height}px`
-
-            popUp.style.display = 'block'
-            popUp.style.transform = `translate(${userCoords.left}px, ${userCoords.top}px`
-
-
-            contactLine.innerHTML = CONTACTS.map(contact => {
-                if (this.innerText != contact.name) {
-                    contactLine.forEach(contact2 => {
-                        contact2.classList.add('inactive')
-                        this.parentNode.classList.add('active')
-                        this.nextElementSibling.style.color = '#00f6ff'
-                    })
-
-                    return `
-                <div class="contactBg">
-                    <div class="contact">
-                        <p class="status contactItem">${contact.status}</p>
-                        <p class="name contactItem">${contact.name}</p>
-                        <p class="info contactItem">${contact.email}</p>
-                    </div>
-                </div>`
-                }
-            }).join('')
-        }
 
 
         infoSelector.addEventListener('change', updateInfo)
-        /* no JQuery for event delegation to be used so I converted the .on to vanilla with help from SO */
-        document.addEventListener("mouseover", e => {
-            document.querySelectorAll('.name').forEach(name => {
-                if (name && name.contains(e.target)) {
-                    triggerPopUp.call(name, e);
-                }
-            }
-            );
-        });
 
-
-        // you were getting the mouseover pop up to come up and thinking about having the contact be the "this" not the name <p>, maybe use z-index to hide then bring up the 2 divs for the popUP? //
+        // your in CSS now & working on setting height and other aspects of the .info .popUP div once set how you like, you will then use CSS :hover to set display of .popUP to block and .info to none ( essentially swapping out hte normal .info for the .popUP version//
 
     </script>
 </body>
