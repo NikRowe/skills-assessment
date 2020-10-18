@@ -8,6 +8,8 @@ My Biggest Hurdles:
 <li>Prioritizing sleep and time</li>
 <br>
 
+<a href="https://nikrowedev14four-assessment.netlify.app/">Demo</a>
+
 I had almost solely used Bootstrap during my boot camp for styling projects, and other libraries such as Reactstrap/MaterializeCSS during personal projects. So the first thing I had to do was dive into the CSS Grid docs and set up a layout. 
 Then I needed to populate the data & style it further. Simple enough... 
 
@@ -21,4 +23,3 @@ An almost complete re-code of the project and a few hours later I had it solved!
 
 I have included the "htmlOG" file just so that anyone can see what I was attempting via my JS approach. 
 
-<a href="https://nikrowedev14four-assessment.netlify.app/">Demo</a>
