@@ -64,3 +64,57 @@ const CONTACTS = [
         address: "244 W. Main, Spokane, WA 99201"
     }
 ];
+
+
+const contactsList = document.querySelector('.contacts')
+const infoSelector = document.querySelector('#infoSelector')
+let contactInfo
+
+
+contactsList.innerHTML = CONTACTS.map(contact => {
+    return `
+            <div class="contact">
+                <div class="status contactItem">
+                    <p>${contact.status}</p>
+                </div>
+                <div class="name contactItem">
+                    <p class="nameP">${contact.name}</p>
+                </div>
+                <div class="info contactItem">
+                    <p>${contact.email}</p>
+                </div> 
+                <div class="contactItem popUP">
+                    <p class="infoP email">${contact.email}</p>
+                    <p class="infoP phone">${contact.phone}</p>
+                    <p class="infoP address">${contact.address}</p>
+                </div>
+            </div>`
+}).join('')
+
+function updateInfo(e) {
+    contactsList.innerHTML = CONTACTS.map(contact => {
+        infoSelector.value === 'email'
+            ? contactInfo = contact.email
+            : contactInfo = contact.phone
+
+        return `
+                <div class="contact">
+                    <div class="status contactItem">
+                        <p>${contact.status}</p>
+                    </div>
+                    <div class="name contactItem">
+                        <p class="nameP">${contact.name}</p>
+                    </div>
+                    <div class="info contactItem">
+                        <p>${contactInfo}</p>
+                    </div> 
+                    <div class="contactItem popUP">
+                        <p class="infoP email">${contact.email}</p>
+                        <p class="infoP phone">${contact.phone}</p>
+                        <p class="infoP address">${contact.address}</p>
+                    </div>
+                </div>`
+    }).join('')
+}
+
+infoSelector.addEventListener('change', updateInfo)
