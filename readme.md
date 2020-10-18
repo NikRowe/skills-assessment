@@ -1,14 +1,23 @@
-## Skills Assessment
+## 14four Skills Assessment
 
-Fork the repo and create the HTML, CSS, and JavaScript for the widget as described in the [Contact List image](https://github.com/14four/skills-assessment/blob/master/contactListUpdated.jpg).  It should take you about 3 hours, but you should try and complete it without taking an entire day. You will be asked to explain any places where your solution does not match the spec.  Please target modern browsers, do not use images, and bonus points for graceful degradation and legacy support solutions.  We wish to assess your CSS skills, so don't use a CSS Framework like Bootstrap or Foundation, they have their place, but this is not it. JQuery is not needed to complete this exercise, we would like to assess your Javascript skills without the use of this library. 
+This assessment is supposed to take about 3-4 hours using HTML/CSS/JS with specific instructions not to over use JS, and not to use libraries such as bootstrap or jquery. The assignment took me about 25hours in total, quite a bit longer than the expected time frame. 
 
-Please code the page according to industry best practices and organize the assets as you would if delivering it to a client to integrate (not necessarily to deploy).
+My Biggest Hurdles: 
+<li>Taking the correct approach </li>
+<li>Learning CSS Grid from scratch</li>
+<li>Prioritizing sleep and time</li>
+<br>
 
-Bonuses: Keep it simple, don't overuse JavaScript.  Prioritize modern browsers - graceful degredation is our friend.
+I had almost solely used Bootstrap during my boot camp for styling projects, and other libraries such as Reactstrap/MaterializeCSS during personal projects. So the first thing I had to do was dive into the CSS Grid docs and set up a layout. 
+Then I needed to populate the data & style it further. Simple enough... 
 
-### Resources
+I believe it took me quite a bit longer because I have been focusing solely on JS exorcises for the past 23 days following a 30day series, having my mind so JS orientated I ended up attempting to use JS for 90% of the assignment despite the instructions. <br>
+While I learned quite a bit such as diving into event delegation to get the event listeners to persist working after switching the selector between phone/email. (This is primarily done in jquery so I then had to find a way to convert the jquery to vanilla js per instructions not to use jquery.) Ultimately it took too many hours and I still was not getting it 100% there. <br>
+I was excited to have the opportunity to take the assessment test as a very new jr. Dev, I started the assessment at 8:30pm on a wednesday and stayed up the entire night logging off at 5:30am to head to my day job. This ended up being a big mistake and I believe cost me more hours than I thought I was gaining by staying up due to not thinking as clearly from lack of sleep. <br>
+Friday night I got some actual rest and woke up Saturday refreshed and things started clicking! <br><i>"Listen to the instructions and what they are almost hinting at.." </i><br> I said to myself. <br> 
+I was most likely expected to run into issues with heavy a JS loaded approach as a jr Dev. I needed to use CSS that wasn't being reset by the selector. 
 
-* [Contact List JPEG](https://github.com/14four/skills-assessment/blob/master/contactListUpdated.jpg)
-* [Contact List PSD](https://github.com/14four/skills-assessment/blob/master/contactListUpdated.psd?raw=true) (right click and save)
+An almost complete re-code of the project and a few hours later I had it solved!!!
 
-![Screen](https://github.com/14four/skills-assessment/raw/master/contactListUpdated.jpg)
+I have included the "htmlOG" file just so that anyone can see what I was attempting via my JS approach. 
+
