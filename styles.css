@@ -1,0 +1,124 @@
+html {
+    font-family: Helvetica;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 4rem 2fr 0.5fr;
+    background-color: #323232;
+    color: white;
+    max-width: 300px;
+    height: 394px;
+    max-height: 394px;
+    border-radius: 25px;
+    box-shadow: 1px 10px 8px rgba(85, 84, 84, 0.5);
+    margin: auto;
+    margin-top: 15%;
+}
+
+
+.header {
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.header h1 {
+    padding-left: 1rem;
+}
+
+.contact {
+    display: grid;
+    grid-template-columns: 2rem 5rem 2fr;
+    grid-template-rows: repeat(1, 2rem);
+    align-items: center;
+    padding-left: 1rem;
+    font-size: 16px;
+    border-bottom: 2px solid black;
+}
+
+.contact:nth-child(even) {
+    background-color: #1a1a1a;
+}
+
+.name {
+    border-right: 2px solid black;
+    height: 100%;
+}
+
+.info {
+    padding-left: 10px;
+}
+
+.popUP {
+    display: none;
+    color: #00f6ff;
+    z-index: 1;
+    align-self: start;
+    background-color: #484848;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.infoP {
+    margin-top: 10px;
+}
+
+.nameP {
+    margin-top: 10px;
+}
+
+.footer {
+    justify-self: end;
+    padding-right: 1rem;
+    padding-top: 1rem;
+}
+
+/* hover css */
+.contacts:hover {
+    background-color: #1a1a1a;
+    color: #333333;
+}
+
+.contacts:hover .contact {
+    border-bottom: none;
+}
+
+.contacts:hover .name {
+    border-right: none;
+}
+
+.contacts:hover .info {
+    opacity: 25%;
+}
+
+.contacts:hover .popUP {
+    color: #333333;
+}
+
+.contacts:hover .status {
+    opacity: 25%;
+}
+
+.contact:hover {
+    background-color: #484848;
+    color: white;
+}
+
+.contact:hover .email {
+    color: #00f6ff;
+}
+
+.contact:hover .status {
+    opacity: 100%;
+}
+
+.contact:hover .popUP {
+    z-index: 2;
+    opacity: 100%;
+    display: block;
+    color: white;
+}
+
+.contact:hover .info {
+    display: none;
+}
