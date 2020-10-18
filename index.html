@@ -5,94 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    <link rel="stylesheet" href="styles.css">
     <title>14four Contact List Challenge</title>
 </head>
 
 <body>
-    <style>
-        html {
-            font-family: Helvetica;
-        }
-
-        .container {
-            display: grid;
-            grid-template-rows: 4rem 2fr .5fr;
-            background-color: #323232;
-            color: white;
-            max-width: 300px;
-            height: 394px;
-            max-height: 394px;
-            border-radius: 25px;
-            box-shadow: 1px 10px 8px rgba(85, 84, 84, 0.5)
-        }
-
-        .header {
-            width: 100%;
-            border-bottom: 2px solid black;
-        }
-
-        .header h1 {
-            padding-left: 1rem;
-        }
-
-        .contact {
-            display: grid;
-            grid-template-columns: 2rem 5rem 2fr;
-            grid-template-rows: repeat(1, 2rem);
-            align-items: center;
-            padding-left: 1rem;
-        }
-
-        .contact:nth-child(even) {
-            background-color: #1a1a1a;
-        }
-
-        .popUP {
-            color: #00f6ff;
-            display: none;
-        }
-
-        .footer {
-            justify-self: end;
-            padding-right: 1rem;
-            padding-top: 1rem;
-        }
-
-        /* hover css */
-        .contacts:hover {
-            background-color: #1a1a1a;
-            color: #333333;
-        }
-
-        .contacts:hover .info {
-            display: none;
-        }
-
-        .contacts:hover .popUP {
-            color: #333333;
-            display: block;
-        }
-
-        .contacts:hover .status {
-            opacity: 25%
-        }
-
-        .contact:hover {
-            background-color: #484848;
-            color: white;
-        }
-
-        .contact:hover .info {
-            color: #00f6ff;
-        }
-
-        .contact:hover .status {
-            opacity: 100%
-        }
-
-        
-    </style>
 
     <div class="container">
         <div class="header">
@@ -111,60 +28,6 @@
 
 
     <script src="scripts.js"></script>
-    <script>
-        const contactsList = document.querySelector('.contacts')
-        const infoSelector = document.querySelector('#infoSelector')
-        let contactInfo
-
-
-        contactsList.innerHTML = CONTACTS.map(contact => {
-            return `
-                <div class="contact">
-                    <div class="status contactItem">
-                        <p>${contact.status}</p>
-                    </div>
-                    <div class="name contactItem">
-                        <p>${contact.name}</p>
-                    </div>
-                    <div class="info contactItem">
-                        <p>${contact.email}</p>
-                    </div>
-                    <div class="info contactItem popUP">
-                        <p>${contact.email}</p>
-                    </div>
-                </div>`
-        }).join('')
-
-        const names = document.querySelectorAll('.name')
-        const info = document.querySelector('.info')
-        const contactLine = document.querySelectorAll('.contact')
-
-
-
-
-        function updateInfo(e) {
-            contactsList.innerHTML = CONTACTS.map(contact => {
-                infoSelector.value === 'email'
-                    ? contactInfo = contact.email
-                    : contactInfo = contact.phone
-
-                return `
-                <div class="contact">
-                    <p class="status contactItem">${contact.status}</p>
-                    <p class="name contactItem">${contact.name}</p>
-                    <p class="info contactItem popUP">${contactInfo}</p>
-                    </div>`
-            }).join('')
-        }
-
-
-
-
-        infoSelector.addEventListener('change', updateInfo)
-
-        // your in CSS now & working on setting height and other aspects of the .info .popUP div once set how you like, you will then use CSS :hover to set display of .popUP to block and .info to none ( essentially swapping out hte normal .info for the .popUP version//
-
-    </script>
 </body>
 
 </html>
